@@ -271,9 +271,6 @@ def main():
         cv2.destroyAllWindows()
         for key in cord_centre_cube:
             if key == "Blue":
-
-                print(cord_centre_cube[key][1])
-                print(cord_centre_cube[key][2])
                 try:
                     # if key != 'Blue':
                     #     continue
@@ -285,20 +282,20 @@ def main():
                     cord_centre_cube[key][6] = statistics.mean(cord_centre_cube[key][5])
                     moveit.add_box(key,(cord_centre_cube[key][0][0])/1000,(cord_centre_cube[key][0][1])/1000,0.025,0.05,0.05,0.05,q3 = (cord_centre_cube[key][6]*3.14)/180)
                     # Построение и вывод графиков
-                    # number_frame = []
-                    # for i in range(1, len(cord_centre_cube[key][1])+1):
-                    #     number_frame.append(i)
+                    number_frame = []
+                    for i in range(1, len(cord_centre_cube[key][1])+1):
+                        number_frame.append(i)
                     
-                    # matplotlib.rcParams.update({'font.size': 12})
-                    # plt.plot(number_frame, cord_centre_cube[key][1],'ob', label=r'$x$')
-                    # plt.plot(number_frame, cord_centre_cube[key][2],'vr', label=r'$y$')
-                    # plt.legend(fontsize=16)
-                    # plt.xlabel('Номер фрейма')
-                    # plt.ylabel('Координта центра по X и по Y')
-                    # plt.title('График зависимости Y от X')
-                    # plt.grid(which='major')
-                    # plt.grid(which='minor', linestyle=':')
-                    # plt.show()
+                    matplotlib.rcParams.update({'font.size': 12})
+                    plt.plot(number_frame, cord_centre_cube[key][1],'ob', label=r'$x$')
+                    plt.plot(number_frame, cord_centre_cube[key][2],'vr', label=r'$y$')
+                    plt.legend(fontsize=16)
+                    plt.xlabel('Номер фрейма')
+                    plt.ylabel('Координта центра по X и по Y в пикселях')
+                    plt.title(key)
+                    plt.grid(which='major')
+                    plt.grid(which='minor', linestyle=':')
+                    plt.show()
                 except:
                     print('Координаты центра кубика', key, 'не удалось получить')
         # moveit.add_box("wall_box_2",0.29,-0.3,0.11,0.01,0.3,0.22)
